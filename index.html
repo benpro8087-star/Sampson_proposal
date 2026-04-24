@@ -35,34 +35,108 @@
             transform: translateY(-4px);
         }
 
-        .timeline-step {
-            position: relative;
+        /* ── Timeline ── */
+        /* Desktop: horizontal connector */
+        @media (min-width: 768px) {
+            .timeline-step {
+                position: relative;
+            }
+            .timeline-step::after {
+                content: '';
+                position: absolute;
+                top: 24px; /* center of the 48px circle */
+                left: calc(50% + 24px);
+                width: calc(100% - 48px);
+                height: 2px;
+                background: #333;
+                z-index: 0;
+            }
+            .timeline-step:last-child::after { display: none; }
         }
-        .timeline-step::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 100%;
-            width: 100%;
-            height: 2px;
-            background: #333;
-            z-index: 0;
+
+        /* Mobile: vertical connector */
+        @media (max-width: 767px) {
+            .timeline-step {
+                position: relative;
+                display: flex;
+                align-items: flex-start;
+                gap: 16px;
+                text-align: left;
+            }
+            .timeline-step::after {
+                content: '';
+                position: absolute;
+                top: 48px;
+                left: 23px; /* center of 48px circle */
+                width: 2px;
+                height: calc(100% + 16px);
+                background: #333;
+                z-index: 0;
+            }
+            .timeline-step:last-child::after { display: none; }
+            .timeline-circle {
+                flex-shrink: 0;
+                position: relative;
+                z-index: 1;
+            }
+            .timeline-text { flex: 1; padding-top: 10px; }
+            .timeline-text p {
+                opacity: 1 !important;
+            }
         }
-        .timeline-step:last-child::after { display: none; }
 
         .glow-red {
             box-shadow: 0 0 20px rgba(193, 18, 31, 0.2);
         }
 
-        @media (max-width: 768px) {
-            .timeline-step::after { display: none; }
+        /* Mobile table: card-style rows */
+        @media (max-width: 767px) {
+            .pricing-table thead { display: none; }
+            .pricing-table tbody tr {
+                display: block;
+                margin-bottom: 16px;
+                background: rgba(255,255,255,0.04);
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 16px;
+                overflow: hidden;
+            }
+            .pricing-table tbody td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 16px;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                font-size: 13px;
+            }
+            .pricing-table tbody td:last-child {
+                border-bottom: none;
+                background: rgba(193,18,31,0.07);
+            }
+            .pricing-table tbody td::before {
+                content: attr(data-label);
+                font-size: 10px;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: #666;
+                font-weight: 700;
+                margin-right: 8px;
+                white-space: nowrap;
+            }
+            .pricing-table tbody td .text-2xl { font-size: 1.1rem; }
+            .pricing-table tbody td .text-xl  { font-size: 0.95rem; }
+            .pricing-table tbody td .text-lg  { font-size: 0.9rem; }
+        }
+
+        /* Smooth hover on mobile (no hover, keep visible) */
+        @media (max-width: 767px) {
+            .group:hover .group-hover\:opacity-100 { opacity: 1; }
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex flex-col justify-center hero-gradient px-6 lg:px-24 relative overflow-hidden">
+    <!-- ══ Hero Section ══ -->
+    <section class="min-h-screen flex flex-col justify-center hero-gradient px-5 sm:px-8 lg:px-24 relative overflow-hidden py-20 sm:py-24">
         <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
             <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
                 <path d="M 50 200 L 350 200 M 200 50 L 200 350" stroke="#C1121F" stroke-width="1" fill="none opacity-20"/>
@@ -71,103 +145,104 @@
         </div>
 
         <div class="z-10 max-w-4xl">
-            <div class="inline-block px-4 py-1 border border-brand-red text-brand-red text-xs font-bold tracking-widest uppercase mb-6 rounded-full bg-brand-red/10">
+            <div class="inline-block px-3 py-1 border border-brand-red text-brand-red text-xs font-bold tracking-widest uppercase mb-5 rounded-full bg-brand-red/10">
                 Strategic Partnership
             </div>
-            <h1 class="text-6xl md:text-8xl font-extrabold mb-4 tracking-tighter leading-tight">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 tracking-tighter leading-tight">
                 Turnkey <span class="text-brand-red">Proposal.</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-12 font-light max-w-2xl">
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 mb-10 font-light max-w-2xl">
                 A Unified iGaming Solution: Sportsbook, Casino, and Lottery Engine. Built for African Market Supremacy.
             </p>
             
-            <div class="flex flex-col md:flex-row gap-8 border-t border-white/10 pt-8">
+            <div class="flex flex-col sm:flex-row gap-6 border-t border-white/10 pt-6">
                 <div>
                     <p class="text-gray-500 uppercase text-xs tracking-widest mb-1">Client</p>
-                    <p class="text-white font-semibold text-lg">Sampson Obeng Asare</p>
+                    <p class="text-white font-semibold text-base sm:text-lg">Sampson Obeng Asare</p>
                 </div>
                 <div>
                     <p class="text-gray-500 uppercase text-xs tracking-widest mb-1">Prepared By</p>
-                    <p class="text-white font-semibold text-lg">Kodedice Team</p>
+                    <p class="text-white font-semibold text-base sm:text-lg">Kodedice Team</p>
                 </div>
             </div>
         </div>
         
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
         </div>
     </section>
 
-    <!-- Overview & Goals -->
-    <section class="py-24 px-6 lg:px-24 bg-dark-surface">
-        <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
+    <!-- ══ Overview & Goals ══ -->
+    <section class="py-16 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-24 bg-dark-surface">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 sm:mb-24 lg:mb-32">
             <div>
-                <h2 class="text-brand-red font-bold uppercase tracking-widest text-sm mb-4">01. Overview</h2>
-                <h3 class="text-4xl font-bold mb-6">Designed for Rapid Launch & Scalability</h3>
-                <p class="text-gray-400 leading-relaxed text-lg mb-8">
+                <h2 class="text-brand-red font-bold uppercase tracking-widest text-xs sm:text-sm mb-3 sm:mb-4">01. Overview</h2>
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-5">Designed for Rapid Launch & Scalability</h3>
+                <p class="text-gray-400 leading-relaxed text-sm sm:text-base lg:text-lg mb-6 sm:mb-8">
                     This proposal outlines a comprehensive ecosystem designed to minimize time-to-market while maximizing operational flexibility. We combine high-performance sports betting with a library of 20,000+ games and a bespoke lottery engine.
                 </p>
-                <div class="flex gap-4">
-                    <div class="bg-brand-red/10 border border-brand-red/20 p-4 rounded-xl flex-1">
-                        <span class="block text-2xl font-bold text-white">African Region</span>
-                        <span class="text-gray-500 text-sm">Rollout Architecture</span>
+                <div class="flex gap-3 sm:gap-4">
+                    <div class="bg-brand-red/10 border border-brand-red/20 p-3 sm:p-4 rounded-xl flex-1">
+                        <span class="block text-lg sm:text-2xl font-bold text-white">African Region</span>
+                        <span class="text-gray-500 text-xs sm:text-sm">Rollout Architecture</span>
                     </div>
-                    <div class="bg-white/5 border border-white/10 p-4 rounded-xl flex-1">
-                        <span class="block text-2xl font-bold text-white">12 Weeks</span>
-                        <span class="text-gray-500 text-sm">Execution Timeline</span>
+                    <div class="bg-white/5 border border-white/10 p-3 sm:p-4 rounded-xl flex-1">
+                        <span class="block text-lg sm:text-2xl font-bold text-white">12 Weeks</span>
+                        <span class="text-gray-500 text-xs sm:text-sm">Execution Timeline</span>
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="card-glass p-6 rounded-2xl">
-                    <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                <div class="card-glass p-4 sm:p-6 rounded-2xl">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-brand-red rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
-                    <h4 class="font-bold mb-2">Rapid Launch</h4>
-                    <p class="text-sm text-gray-500">Fully operational in Africa within 90 days.</p>
+                    <h4 class="font-bold mb-1 sm:mb-2 text-sm sm:text-base">Rapid Launch</h4>
+                    <p class="text-xs text-gray-500">Fully operational in Africa within 90 days.</p>
                 </div>
-                <div class="card-glass p-6 rounded-2xl mt-8">
-                    <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <div class="card-glass p-4 sm:p-6 rounded-2xl sm:mt-8">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-brand-red rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                     </div>
-                    <h4 class="font-bold mb-2">Multi-Market</h4>
-                    <p class="text-sm text-gray-500">Local language and currency ready.</p>
+                    <h4 class="font-bold mb-1 sm:mb-2 text-sm sm:text-base">Multi-Market</h4>
+                    <p class="text-xs text-gray-500">Local language and currency ready.</p>
                 </div>
-                <div class="card-glass p-6 rounded-2xl">
-                    <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                <div class="card-glass p-4 sm:p-6 rounded-2xl">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-brand-red rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </div>
-                    <h4 class="font-bold mb-2">Full Compliance</h4>
-                    <p class="text-sm text-gray-500">Responsible gaming & AML integrated.</p>
+                    <h4 class="font-bold mb-1 sm:mb-2 text-sm sm:text-base">Full Compliance</h4>
+                    <p class="text-xs text-gray-500">Responsible gaming & AML integrated.</p>
                 </div>
-                <div class="card-glass p-6 rounded-2xl mt-8">
-                    <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                <div class="card-glass p-4 sm:p-6 rounded-2xl sm:mt-8">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-brand-red rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                        <svg class="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                     </div>
-                    <h4 class="font-bold mb-2">Native PSPs</h4>
-                    <p class="text-sm text-gray-500">Mobile money and local banking hooks.</p>
+                    <h4 class="font-bold mb-1 sm:mb-2 text-sm sm:text-base">Native PSPs</h4>
+                    <p class="text-xs text-gray-500">Mobile money and local banking hooks.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Platform Scope -->
-    <section class="py-24 px-6 lg:px-24 bg-[#0a0a0a]">
-        <div class="text-center mb-16">
-            <h2 class="text-brand-red font-bold uppercase tracking-widest text-sm mb-4">02. Platform Scope</h2>
-            <h3 class="text-4xl font-bold">The Three Verticals</h3>
+    <!-- ══ Platform Scope ══ -->
+    <section class="py-16 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-24 bg-[#0a0a0a]">
+        <div class="text-center mb-10 sm:mb-14 lg:mb-16">
+            <h2 class="text-brand-red font-bold uppercase tracking-widest text-xs sm:text-sm mb-3 sm:mb-4">02. Platform Scope</h2>
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold">The Three Verticals</h3>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-8 sm:mb-12 lg:mb-16">
             <!-- Lottery -->
-            <div class="card-glass p-8 rounded-3xl border-t-4 border-brand-red glow-red">
-                <div class="text-brand-red mb-6">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>
+            <div class="card-glass p-6 sm:p-8 rounded-3xl border-t-4 border-brand-red glow-red">
+                <div class="text-brand-red mb-4 sm:mb-6">
+                    <svg class="w-9 h-9 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>
                 </div>
-                <h4 class="text-2xl font-bold mb-4 uppercase tracking-tight">Lottery Engine</h4>
-                <ul class="space-y-4 text-gray-400">
+                <h4 class="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 uppercase tracking-tight">Lottery Engine</h4>
+                <ul class="space-y-3 sm:space-y-4 text-gray-400 text-sm sm:text-base">
                     <li class="flex items-start gap-3"><span class="text-brand-red">•</span> A modern lottery with interactive features</li>
                     <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Admin-controlled payout ratios</li>
                     <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Scalable high-volume ticketing architecture</li>
@@ -175,12 +250,12 @@
             </div>
 
             <!-- Casino -->
-            <div class="card-glass p-8 rounded-3xl">
-                <div class="text-white mb-6">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
+            <div class="card-glass p-6 sm:p-8 rounded-3xl">
+                <div class="text-white mb-4 sm:mb-6">
+                    <svg class="w-9 h-9 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
                 </div>
-                <h4 class="text-2xl font-bold mb-4 uppercase tracking-tight">Online Casino</h4>
-                <ul class="space-y-4 text-gray-400">
+                <h4 class="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 uppercase tracking-tight">Online Casino</h4>
+                <ul class="space-y-3 sm:space-y-4 text-gray-400 text-sm sm:text-base">
                     <li class="flex items-start gap-3"><span class="text-brand-red">•</span> 20,000+ Games / 200 Providers</li>
                     <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Slots, Crash Games & Live Dealers</li>
                     <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Optimized for low-bandwidth behavior</li>
@@ -188,12 +263,12 @@
             </div>
 
             <!-- Sportsbook -->
-            <div class="card-glass p-8 rounded-3xl">
-                <div class="text-white mb-6">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div class="card-glass p-6 sm:p-8 rounded-3xl">
+                <div class="text-white mb-4 sm:mb-6">
+                    <svg class="w-9 h-9 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
-                <h4 class="text-2xl font-bold mb-4 uppercase tracking-tight">Sportsbook</h4>
-                <ul class="space-y-4 text-gray-400">
+                <h4 class="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 uppercase tracking-tight">Sportsbook</h4>
+                <ul class="space-y-3 sm:space-y-4 text-gray-400 text-sm sm:text-base">
                     <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Live Betting, Virtuals & E-sports</li>
                     <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Branded Custom UI / UX</li>
                     <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Real-time risk & odds management</li>
@@ -202,47 +277,47 @@
         </div>
 
         <!-- Backoffice info -->
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-dark-surface p-8 rounded-3xl border border-white/5">
-                <h5 class="text-white font-bold mb-4 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
+        <div class="grid md:grid-cols-2 gap-5 sm:gap-8">
+            <div class="bg-dark-surface p-5 sm:p-8 rounded-3xl border border-white/5">
+                <h5 class="text-white font-bold mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
                     Finance & Reporting
                 </h5>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="text-gray-400 text-sm py-2 border-b border-white/5">Deposit Visibility</div>
-                    <div class="text-gray-400 text-sm py-2 border-b border-white/5">Withdrawal Tracking</div>
-                    <div class="text-gray-400 text-sm py-2 border-b border-white/5">Ticket Lifecycle</div>
-                    <div class="text-gray-400 text-sm py-2 border-b border-white/5">Bonus Utilization</div>
+                <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                    <div class="text-gray-400 text-xs sm:text-sm py-2 border-b border-white/5">Deposit Visibility</div>
+                    <div class="text-gray-400 text-xs sm:text-sm py-2 border-b border-white/5">Withdrawal Tracking</div>
+                    <div class="text-gray-400 text-xs sm:text-sm py-2 border-b border-white/5">Ticket Lifecycle</div>
+                    <div class="text-gray-400 text-xs sm:text-sm py-2 border-b border-white/5">Bonus Utilization</div>
                 </div>
             </div>
-            <div class="bg-dark-surface p-8 rounded-3xl border border-white/5">
-                <h5 class="text-white font-bold mb-4 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9L10 1.554 17.834 4.9c.164.07.306.194.405.346.099.153.146.332.136.512l-.934 11.09c-.046.545-.405 1.013-.918 1.196L10 19.832l-6.523-1.788c-.513-.183-.872-.651-.918-1.196L1.625 5.758c-.01-.18.037-.36.136-.512.099-.152.24-.277.405-.346zM10 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd"></path></svg>
+            <div class="bg-dark-surface p-5 sm:p-8 rounded-3xl border border-white/5">
+                <h5 class="text-white font-bold mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9L10 1.554 17.834 4.9c.164.07.306.194.405.346.099.153.146.332.136.512l-.934 11.09c-.046.545-.405 1.013-.918 1.196L10 19.832l-6.523-1.788c-.513-.183-.872-.651-.918-1.196L1.625 5.758c-.01-.18.037-.36.136-.512.099-.152.24-.277.405-.346zM10 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd"></path></svg>
                     Security & Compliance
                 </h5>
-                <p class="text-gray-500 text-sm mb-4 italic">Infrastructure responsibility & controls</p>
-                <div class="p-4 bg-black/40 rounded-xl border-l-2 border-brand-red">
-                    <p class="text-xs text-gray-300">DDoS Protection:<ul class="space-y-4 text-gray-400">
-                    <li class="flex items-start gap-2"><span class="text-brand-red">•</span> Hosting is required from the start of the project (~$150–$200/month).</li>
-                    <li class="flex items-start gap-2"><span class="text-brand-red">•</span> After launch, DDoS protection becomes mandatory (~$100–$150/month).</li>
-                    <li class="flex items-start gap- 2"><span class="text-brand-red">•</span> 
-Total estimated infrastructure cost: ~$350–$400/month.</li>
-                </ul>
-</p>
+                <p class="text-gray-500 text-xs sm:text-sm mb-3 sm:mb-4 italic">Infrastructure responsibility & controls</p>
+                <div class="p-3 sm:p-4 bg-black/40 rounded-xl border-l-2 border-brand-red">
+                    <p class="text-xs text-gray-300 font-semibold mb-2">DDoS Protection:</p>
+                    <ul class="space-y-2 text-gray-400 text-xs">
+                        <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> Hosting is required from the start of the project (~$150–$200/month).</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> After launch, DDoS protection becomes mandatory (~$100–$150/month).</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-red mt-0.5">•</span> Total estimated infrastructure cost: ~$350–$400/month.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Timeline Section -->
-    <section class="py-24 px-6 lg:px-24 bg-dark-surface overflow-hidden">
-        <div class="text-center mb-20">
-            <h2 class="text-brand-red font-bold uppercase tracking-widest text-sm mb-4">03. Project Lifecycle</h2>
-            <h3 class="text-4xl font-bold">12-Week Parallel Execution</h3>
-            <p class="text-gray-500 mt-4">Concurrent development of all verticals to minimize time-to-market.</p>
+    <!-- ══ Timeline Section ══ -->
+    <section class="py-16 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-24 bg-dark-surface overflow-hidden">
+        <div class="text-center mb-12 sm:mb-16 lg:mb-20">
+            <h2 class="text-brand-red font-bold uppercase tracking-widest text-xs sm:text-sm mb-3 sm:mb-4">03. Project Lifecycle</h2>
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold">12-Week Parallel Execution</h3>
+            <p class="text-gray-500 mt-3 sm:mt-4 text-sm sm:text-base">Concurrent development of all verticals to minimize time-to-market.</p>
         </div>
 
-        <div class="relative flex flex-col md:flex-row justify-between gap-8">
+        <!-- Desktop / tablet horizontal -->
+        <div class="hidden md:flex relative flex-row justify-between gap-8">
             <div class="timeline-step flex-1 text-center group">
                 <div class="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 glow-red">
                     <span class="text-sm font-bold">W1</span>
@@ -272,59 +347,101 @@ Total estimated infrastructure cost: ~$350–$400/month.</li>
                 <p class="text-xs text-gray-500 px-4 opacity-0 group-hover:opacity-100 transition-opacity">Final end-to-end testing and delivery.</p>
             </div>
         </div>
+
+        <!-- Mobile vertical timeline -->
+        <div class="flex md:hidden flex-col gap-4">
+            <div class="timeline-step">
+                <div class="timeline-circle w-12 h-12 bg-brand-red rounded-full flex items-center justify-center glow-red">
+                    <span class="text-sm font-bold">W1</span>
+                </div>
+                <div class="timeline-text">
+                    <h5 class="text-white font-bold mb-1">Kickoff & Planning</h5>
+                    <p class="text-xs text-gray-500">Integration starts and roadmaps finalized.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-circle w-12 h-12 bg-[#222] rounded-full flex items-center justify-center border border-white/10">
+                    <span class="text-sm font-bold">W4</span>
+                </div>
+                <div class="timeline-text">
+                    <h5 class="text-white font-bold mb-1">Core Development</h5>
+                    <p class="text-xs text-gray-500">PSP integrations and vertical development.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-circle w-12 h-12 bg-[#222] rounded-full flex items-center justify-center border border-white/10">
+                    <span class="text-sm font-bold">W8</span>
+                </div>
+                <div class="timeline-text">
+                    <h5 class="text-white font-bold mb-1">Refinement & Testing</h5>
+                    <p class="text-xs text-gray-500">Advanced lottery validation and UI optimization.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-circle w-12 h-12 bg-[#222] rounded-full flex items-center justify-center border border-white/10">
+                    <span class="text-sm font-bold">W12</span>
+                </div>
+                <div class="timeline-text">
+                    <h5 class="text-brand-red font-bold mb-1 uppercase tracking-tighter">Go-Live Readiness</h5>
+                    <p class="text-xs text-gray-500">Final end-to-end testing and delivery.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Commercial Terms -->
-    <section class="py-24 px-6 lg:px-24 bg-[#0a0a0a]">
+    <!-- ══ Commercial Terms ══ -->
+    <section class="py-16 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-24 bg-[#0a0a0a]">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-brand-red font-bold uppercase tracking-widest text-sm mb-4 text-center">04. Schedule A</h2>
-            <h3 class="text-4xl font-bold mb-12 text-center">Commercial Terms</h3>
+            <h2 class="text-brand-red font-bold uppercase tracking-widest text-xs sm:text-sm mb-3 sm:mb-4 text-center">04. Schedule A</h2>
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-center">Commercial Terms</h3>
 
-            <div class="card-glass rounded-3xl overflow-hidden mb-12">
-                <table class="w-full text-left">
+            <!-- Desktop table -->
+            <div class="card-glass rounded-3xl overflow-hidden mb-8 sm:mb-12 hidden md:block">
+                <table class="w-full text-left pricing-table">
                     <thead>
                         <tr class="bg-white/5 border-b border-white/10">
-                            <th class="p-6 text-sm font-bold uppercase tracking-widest text-gray-400">Vertical / Item</th>
-                            <th class="p-6 text-sm font-bold uppercase tracking-widest text-gray-400">Model</th>
-                            <th class="p-6 text-sm font-bold uppercase tracking-widest text-gray-400">Cost / Terms</th>
+                            <th class="p-5 lg:p-6 text-sm font-bold uppercase tracking-widest text-gray-400">Vertical / Item</th>
+                            <th class="p-5 lg:p-6 text-sm font-bold uppercase tracking-widest text-gray-400">Model</th>
+                            <th class="p-5 lg:p-6 text-sm font-bold uppercase tracking-widest text-gray-400">Cost / Terms</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-white/5">
                         <tr>
-                            <td class="p-6">
+                            <td class="p-5 lg:p-6">
                                 <span class="block font-bold">Setup Fee</span>
                                 <span class="text-xs text-gray-500">One-time onboarding</span>
                             </td>
-                            <td class="p-6 text-gray-400 text-sm">Fixed Cost</td>
-                            <td class="p-6 text-2xl font-bold text-white">$20,000</td>
+                            <td class="p-5 lg:p-6 text-gray-400 text-sm">Fixed Cost</td>
+                            <td class="p-5 lg:p-6 text-2xl font-bold text-white">$20,000</td>
                         </tr>
                         <tr>
-                            <td class="p-6">
+                            <td class="p-5 lg:p-6">
                                 <span class="block font-bold">Lottery</span>
                                 <span class="text-xs text-gray-500">From Day 1 Live</span>
                             </td>
-                            <td class="p-6 text-gray-400 text-sm">GGR Share</td>
-                            <td class="p-6 text-xl font-bold text-brand-white">15% GGR on Monthly basis</td>
+                            <td class="p-5 lg:p-6 text-gray-400 text-sm">GGR Share</td>
+                            <td class="p-5 lg:p-6 text-xl font-bold">15% GGR on Monthly basis</td>
                         </tr>
                         <tr>
-                            <td class="p-6">
+                            <td class="p-5 lg:p-6">
                                 <span class="block font-bold">Online Casino</span>
                             </td>
-                            <td class="p-6 text-gray-400 text-sm">GGR Share</td>
-                            <td class="p-6 text-xl font-bold text-white">15% GGR monthly (Normal Games) - 18% GGR Monthly (Live Games)</td>
+                            <td class="p-5 lg:p-6 text-gray-400 text-sm">GGR Share</td>
+                            <td class="p-5 lg:p-6 text-sm font-bold text-white">
+                                15% GGR monthly (Normal Games)<br>
+                                <span class="text-brand-red">18% GGR monthly (Live Games)</span>
+                            </td>
                         </tr>
                         <tr>
-                            <td class="p-6">
+                            <td class="p-5 lg:p-6">
                                 <span class="block font-bold">Sportsbook</span>
                                 <span class="text-xs text-gray-500">Minimum Management Fee</span>
                             </td>
-                            <td class="p-6 text-gray-400 text-sm">Tiered GGR/MMF</td>
-                            <td class="p-6 text-white">
+                            <td class="p-5 lg:p-6 text-gray-400 text-sm">Tiered GGR/MMF</td>
+                            <td class="p-5 lg:p-6 text-white">
                                 <div class="flex flex-col">
                                     <span class="font-bold text-lg">15% GGR monthly</span>
-                                    <span class="text-[10px] text-gray-500 mt-1 uppercase tracking-tighter"> Minimum monthly payment:
-$4k (months 1–3), $5k (months 4–6), $6k (month 7+) whichever is higher
-</span>
+                                    <span class="text-[10px] text-gray-500 mt-1 uppercase tracking-tighter">Minimum monthly payment: $4k (months 1–3), $5k (months 4–6), $6k (month 7+) whichever is higher</span>
                                 </div>
                             </td>
                         </tr>
@@ -332,19 +449,87 @@ $4k (months 1–3), $5k (months 4–6), $6k (month 7+) whichever is higher
                 </table>
             </div>
 
-            <!-- GGR Cards -->
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="p-6 bg-dark-surface rounded-2xl border border-white/5 flex items-start gap-4">
-                    <div class="mt-1 text-brand-red italic font-serif font-bold text-2xl">i</div>
+            <!-- Mobile card-style pricing -->
+            <div class="md:hidden space-y-4 mb-8">
+                <!-- Setup Fee -->
+                <div class="bg-white/4 border border-white/10 rounded-2xl overflow-hidden">
+                    <div class="bg-brand-red/15 px-4 py-3 border-b border-white/10">
+                        <span class="font-bold text-white">Setup Fee</span>
+                        <span class="text-xs text-gray-400 ml-2">· One-time onboarding</span>
+                    </div>
+                    <div class="px-4 py-3 flex justify-between items-center border-b border-white/5">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Model</span>
+                        <span class="text-sm text-gray-300">Fixed Cost</span>
+                    </div>
+                    <div class="px-4 py-3 flex justify-between items-center bg-brand-red/5">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Cost</span>
+                        <span class="text-2xl font-bold text-white">$20,000</span>
+                    </div>
+                </div>
+
+                <!-- Lottery -->
+                <div class="bg-white/4 border border-white/10 rounded-2xl overflow-hidden">
+                    <div class="bg-brand-red/15 px-4 py-3 border-b border-white/10">
+                        <span class="font-bold text-white">Lottery</span>
+                        <span class="text-xs text-gray-400 ml-2">· From Day 1 Live</span>
+                    </div>
+                    <div class="px-4 py-3 flex justify-between items-center border-b border-white/5">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Model</span>
+                        <span class="text-sm text-gray-300">GGR Share</span>
+                    </div>
+                    <div class="px-4 py-3 flex justify-between items-center bg-brand-red/5">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Terms</span>
+                        <span class="text-base font-bold text-white">15% GGR / month</span>
+                    </div>
+                </div>
+
+                <!-- Online Casino -->
+                <div class="bg-white/4 border border-white/10 rounded-2xl overflow-hidden">
+                    <div class="bg-brand-red/15 px-4 py-3 border-b border-white/10">
+                        <span class="font-bold text-white">Online Casino</span>
+                    </div>
+                    <div class="px-4 py-3 flex justify-between items-center border-b border-white/5">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Model</span>
+                        <span class="text-sm text-gray-300">GGR Share</span>
+                    </div>
+                    <div class="px-4 py-3 bg-brand-red/5">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide block mb-2">Terms</span>
+                        <p class="text-sm font-bold text-white">15% GGR/month <span class="text-gray-400 font-normal">(Normal Games)</span></p>
+                        <p class="text-sm font-bold text-brand-red mt-1">18% GGR/month <span class="text-gray-400 font-normal">(Live Games)</span></p>
+                    </div>
+                </div>
+
+                <!-- Sportsbook -->
+                <div class="bg-white/4 border border-white/10 rounded-2xl overflow-hidden">
+                    <div class="bg-brand-red/15 px-4 py-3 border-b border-white/10">
+                        <span class="font-bold text-white">Sportsbook</span>
+                        <span class="text-xs text-gray-400 ml-2">· Min. Management Fee</span>
+                    </div>
+                    <div class="px-4 py-3 flex justify-between items-center border-b border-white/5">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Model</span>
+                        <span class="text-sm text-gray-300">Tiered GGR/MMF</span>
+                    </div>
+                    <div class="px-4 py-3 bg-brand-red/5">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide block mb-2">Terms</span>
+                        <p class="text-base font-bold text-white mb-1">15% GGR / month</p>
+                        <p class="text-xs text-gray-400 leading-relaxed">Min. payment: $4k (months 1–3) · $5k (months 4–6) · $6k (month 7+) — whichever is higher</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GGR Info Cards -->
+            <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                <div class="p-4 sm:p-6 bg-dark-surface rounded-2xl border border-white/5 flex items-start gap-3 sm:gap-4">
+                    <div class="mt-1 text-brand-red italic font-serif font-bold text-xl sm:text-2xl flex-shrink-0">i</div>
                     <div>
-                        <h6 class="font-bold text-white text-sm mb-1 uppercase">Lottery GGR Definition</h6>
+                        <h6 class="font-bold text-white text-xs sm:text-sm mb-1 uppercase">Lottery GGR Definition</h6>
                         <p class="text-gray-500 text-xs leading-relaxed">Total Ticket Sales minus Total Winnings Paid Out.</p>
                     </div>
                 </div>
-                <div class="p-6 bg-dark-surface rounded-2xl border border-white/5 flex items-start gap-4">
-                    <div class="mt-1 text-brand-red italic font-serif font-bold text-2xl">i</div>
+                <div class="p-4 sm:p-6 bg-dark-surface rounded-2xl border border-white/5 flex items-start gap-3 sm:gap-4">
+                    <div class="mt-1 text-brand-red italic font-serif font-bold text-xl sm:text-2xl flex-shrink-0">i</div>
                     <div>
-                        <h6 class="font-bold text-white text-sm mb-1 uppercase">Casino & Sportsbook GGR</h6>
+                        <h6 class="font-bold text-white text-xs sm:text-sm mb-1 uppercase">Casino & Sportsbook GGR</h6>
                         <p class="text-gray-500 text-xs leading-relaxed">Total Bets placed minus Total Player Winnings.</p>
                     </div>
                 </div>
@@ -352,43 +537,45 @@ $4k (months 1–3), $5k (months 4–6), $6k (month 7+) whichever is higher
         </div>
     </section>
 
-    <!-- Why Kodedice / Call to Action -->
-    <section class="py-24 px-6 lg:px-24 bg-dark-surface relative overflow-hidden">
+    <!-- ══ Why Kodedice / CTA ══ -->
+    <section class="py-16 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-24 bg-dark-surface relative overflow-hidden">
         <div class="absolute inset-0 bg-brand-red/5 opacity-30 pointer-events-none"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-brand-red font-bold uppercase tracking-widest text-sm mb-4">Final Verdict</h2>
-            <h3 class="text-5xl font-extrabold mb-12">Ready to Launch. <span class="text-brand-red">Ready to Scale.</span></h3>
+            <h2 class="text-brand-red font-bold uppercase tracking-widest text-xs sm:text-sm mb-3 sm:mb-4">Final Verdict</h2>
+            <h3 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-8 sm:mb-12">
+                Ready to Launch. <span class="text-brand-red">Ready to Scale.</span>
+            </h3>
             
-            <div class="grid md:grid-cols-3 gap-6 mb-16">
-                <div class="p-6 card-glass rounded-2xl text-left border-b-2 border-brand-red">
-                    <h5 class="font-bold mb-2">Fast Execution</h5>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
+                <div class="p-5 sm:p-6 card-glass rounded-2xl text-left border-b-2 border-brand-red">
+                    <h5 class="font-bold mb-2 text-sm sm:text-base">Fast Execution</h5>
                     <p class="text-xs text-gray-500">Parallel vertical development ensures record speed to market.</p>
                 </div>
-                <div class="p-6 card-glass rounded-2xl text-left border-b-2 border-brand-red">
-                    <h5 class="font-bold mb-2">Proven Tech</h5>
+                <div class="p-5 sm:p-6 card-glass rounded-2xl text-left border-b-2 border-brand-red">
+                    <h5 class="font-bold mb-2 text-sm sm:text-base">Proven Tech</h5>
                     <p class="text-xs text-gray-500">Robust sportsbook and casino backends already handling millions.</p>
                 </div>
-                <div class="p-6 card-glass rounded-2xl text-left border-b-2 border-brand-red">
-                    <h5 class="font-bold mb-2">Market Insight</h5>
+                <div class="p-5 sm:p-6 card-glass rounded-2xl text-left border-b-2 border-brand-red">
+                    <h5 class="font-bold mb-2 text-sm sm:text-base">Market Insight</h5>
                     <p class="text-xs text-gray-500">Specific focus on African localized payment and data behavior.</p>
                 </div>
             </div>
 
             <div class="flex flex-col items-center">
-                <button class="bg-brand-red text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-[#d11523] transition-all transform hover:scale-105 active:scale-95 glow-red mb-6">
+                <button class="bg-brand-red text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg hover:bg-[#d11523] transition-all transform hover:scale-105 active:scale-95 glow-red mb-4 sm:mb-6 w-full sm:w-auto">
                     PROCEED TO KICKOFF
                 </button>
-                <p class="text-gray-500 text-sm tracking-widest uppercase">Immediate Onboarding Available Upon Approval</p>
+                <p class="text-gray-500 text-xs tracking-widest uppercase">Immediate Onboarding Available Upon Approval</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 px-6 lg:px-24 border-t border-white/5 bg-[#0a0a0a] text-center md:text-left">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+    <!-- ══ Footer ══ -->
+    <footer class="py-8 sm:py-12 px-5 sm:px-8 lg:px-24 border-t border-white/5 bg-[#0a0a0a] text-center md:text-left">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
             <div class="flex items-center gap-2">
-                <span class="font-extrabold tracking-tighter text-xl">KODEDICE</span>
+                <span class="font-extrabold tracking-tighter text-lg sm:text-xl">KODEDICE</span>
             </div>
             <div class="text-gray-600 text-xs">
                 &copy; 2026 Kodedice Tech Solutions. All rights reserved. Confidential Proposal.
