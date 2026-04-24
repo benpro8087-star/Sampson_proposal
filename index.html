@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turnkey Proposal | Kodedice x Sampson</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+        .bg-dark-surface { background-color: #121212; }
+        .text-brand-red { color: #C1121F; }
+        .bg-brand-red { background-color: #C1121F; }
+        .border-brand-red { border-color: #C1121F; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0203 50%, #C1121F44 100%);
+        }
+        
+        .card-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .card-glass:hover {
+            border-color: rgba(193, 18, 31, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .timeline-step {
+            position: relative;
+        }
+        .timeline-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 100%;
+            height: 2px;
+            background: #333;
+            z-index: 0;
+        }
+        .timeline-step:last-child::after { display: none; }
+
+        .glow-red {
+            box-shadow: 0 0 20px rgba(193, 18, 31, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-step::after { display: none; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center hero-gradient px-6 lg:px-24 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <path d="M 50 200 L 350 200 M 200 50 L 200 350" stroke="#C1121F" stroke-width="1" fill="none opacity-20"/>
+                <circle cx="200" cy="200" r="150" stroke="#C1121F" stroke-width="0.5" fill="none"/>
+            </svg>
+        </div>
+
+        <div class="z-10 max-w-4xl">
+            <div class="inline-block px-4 py-1 border border-brand-red text-brand-red text-xs font-bold tracking-widest uppercase mb-6 rounded-full bg-brand-red/10">
+                Strategic Partnership
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-4 tracking-tighter leading-tight">
+                Turnkey <span class="text-brand-red">Proposal.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 mb-12 font-light max-w-2xl">
+                A Unified iGaming Solution: Sportsbook, Casino, and Lottery Engine. Built for African Market Supremacy.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-8 border-t border-white/10 pt-8">
+                <div>
+                    <p class="text-gray-500 uppercase text-xs tracking-widest mb-1">Client</p>
+                    <p class="text-white font-semibold text-lg">Sampson Obeng Asare</p>
+                </div>
+                <div>
+                    <p class="text-gray-500 uppercase text-xs tracking-widest mb-1">Prepared By</p>
+                    <p class="text-white font-semibold text-lg">Kodedice Team</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Overview & Goals -->
+    <section class="py-24 px-6 lg:px-24 bg-dark-surface">
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
+            <div>
+                <h2 class="text-brand-red font-bold uppercase tracking-widest text-sm mb-4">01. Overview</h2>
+                <h3 class="text-4xl font-bold mb-6">Designed for Rapid Launch & Scalability</h3>
+                <p class="text-gray-400 leading-relaxed text-lg mb-8">
+                    This proposal outlines a comprehensive ecosystem designed to minimize time-to-market while maximizing operational flexibility. We combine high-performance sports betting with a library of 20,000+ games and a bespoke lottery engine.
+                </p>
+                <div class="flex gap-4">
+                    <div class="bg-brand-red/10 border border-brand-red/20 p-4 rounded-xl flex-1">
+                        <span class="block text-2xl font-bold text-white">African Region</span>
+                        <span class="text-gray-500 text-sm">Rollout Architecture</span>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 p-4 rounded-xl flex-1">
+                        <span class="block text-2xl font-bold text-white">12 Weeks</span>
+                        <span class="text-gray-500 text-sm">Execution Timeline</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="card-glass p-6 rounded-2xl">
+                    <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h4 class="font-bold mb-2">Rapid Launch</h4>
+                    <p class="text-sm text-gray-500">Fully operational in Africa within 90 days.</p>
+                </div>
+                <div class="card-glass p-6 rounded-2xl mt-8">
+                    <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h4 class="font-bold mb-2">Multi-Market</h4>
+                    <p class="text-sm text-gray-500">Local language and currency ready.</p>
+                </div>
+                <div class="card-glass p-6 rounded-2xl">
+                    <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h4 class="font-bold mb-2">Full Compliance</h4>
+                    <p class="text-sm text-gray-500">Responsible gaming & AML integrated.</p>
+                </div>
+                <div class="card-glass p-6 rounded-2xl mt-8">
+                    <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    </div>
+                    <h4 class="font-bold mb-2">Native PSPs</h4>
+                    <p class="text-sm text-gray-500">Mobile money and local banking hooks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Scope -->
+    <section class="py-24 px-6 lg:px-24 bg-[#0a0a0a]">
+        <div class="text-center mb-16">
+            <h2 class="text-brand-red font-bold uppercase tracking-widest text-sm mb-4">02. Platform Scope</h2>
+            <h3 class="text-4xl font-bold">The Three Verticals</h3>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <!-- Lottery -->
+            <div class="card-glass p-8 rounded-3xl border-t-4 border-brand-red glow-red">
+                <div class="text-brand-red mb-6">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-4 uppercase tracking-tight">Lottery Engine</h4>
+                <ul class="space-y-4 text-gray-400">
+                    <li class="flex items-start gap-3"><span class="text-brand-red">•</span> A modern lottery with interactive features</li>
+                    <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Admin-controlled payout ratios</li>
+                    <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Scalable high-volume ticketing architecture</li>
+                </ul>
+            </div>
+
+            <!-- Casino -->
+            <div class="card-glass p-8 rounded-3xl">
+                <div class="text-white mb-6">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-4 uppercase tracking-tight">Online Casino</h4>
+                <ul class="space-y-4 text-gray-400">
+                    <li class="flex items-start gap-3"><span class="text-brand-red">•</span> 20,000+ Games / 200 Providers</li>
+                    <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Slots, Crash Games & Live Dealers</li>
+                    <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Optimized for low-bandwidth behavior</li>
+                </ul>
+            </div>
+
+            <!-- Sportsbook -->
+            <div class="card-glass p-8 rounded-3xl">
+                <div class="text-white mb-6">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-4 uppercase tracking-tight">Sportsbook</h4>
+                <ul class="space-y-4 text-gray-400">
+                    <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Live Betting, Virtuals & E-sports</li>
+                    <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Branded Custom UI / UX</li>
+                    <li class="flex items-start gap-3"><span class="text-brand-red">•</span> Real-time risk & odds management</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Backoffice info -->
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-dark-surface p-8 rounded-3xl border border-white/5">
+                <h5 class="text-white font-bold mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
+                    Finance & Reporting
+                </h5>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="text-gray-400 text-sm py-2 border-b border-white/5">Deposit Visibility</div>
+                    <div class="text-gray-400 text-sm py-2 border-b border-white/5">Withdrawal Tracking</div>
+                    <div class="text-gray-400 text-sm py-2 border-b border-white/5">Ticket Lifecycle</div>
+                    <div class="text-gray-400 text-sm py-2 border-b border-white/5">Bonus Utilization</div>
+                </div>
+            </div>
+            <div class="bg-dark-surface p-8 rounded-3xl border border-white/5">
+                <h5 class="text-white font-bold mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9L10 1.554 17.834 4.9c.164.07.306.194.405.346.099.153.146.332.136.512l-.934 11.09c-.046.545-.405 1.013-.918 1.196L10 19.832l-6.523-1.788c-.513-.183-.872-.651-.918-1.196L1.625 5.758c-.01-.18.037-.36.136-.512.099-.152.24-.277.405-.346zM10 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd"></path></svg>
+                    Security & Compliance
+                </h5>
+                <p class="text-gray-500 text-sm mb-4 italic">Infrastructure responsibility & controls</p>
+                <div class="p-4 bg-black/40 rounded-xl border-l-2 border-brand-red">
+                    <p class="text-xs text-gray-300">DDoS Protection: Technical integration supervised by Kodedice; selection and costs handled by Client.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-24 px-6 lg:px-24 bg-dark-surface overflow-hidden">
+        <div class="text-center mb-20">
+            <h2 class="text-brand-red font-bold uppercase tracking-widest text-sm mb-4">03. Project Lifecycle</h2>
+            <h3 class="text-4xl font-bold">12-Week Parallel Execution</h3>
+            <p class="text-gray-500 mt-4">Concurrent development of all verticals to minimize time-to-market.</p>
+        </div>
+
+        <div class="relative flex flex-col md:flex-row justify-between gap-8">
+            <div class="timeline-step flex-1 text-center group">
+                <div class="w-12 h-12 bg-brand-red rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 glow-red">
+                    <span class="text-sm font-bold">W1</span>
+                </div>
+                <h5 class="text-white font-bold mb-2">Kickoff & Planning</h5>
+                <p class="text-xs text-gray-500 px-4 opacity-0 group-hover:opacity-100 transition-opacity">Integration starts and roadmaps finalized.</p>
+            </div>
+            <div class="timeline-step flex-1 text-center group">
+                <div class="w-12 h-12 bg-[#222] rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-white/10 group-hover:bg-brand-red transition-all">
+                    <span class="text-sm font-bold">W4</span>
+                </div>
+                <h5 class="text-white font-bold mb-2">Core Development</h5>
+                <p class="text-xs text-gray-500 px-4 opacity-0 group-hover:opacity-100 transition-opacity">PSP integrations and vertical development.</p>
+            </div>
+            <div class="timeline-step flex-1 text-center group">
+                <div class="w-12 h-12 bg-[#222] rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-white/10 group-hover:bg-brand-red transition-all">
+                    <span class="text-sm font-bold">W8</span>
+                </div>
+                <h5 class="text-white font-bold mb-2">Refinement & Testing</h5>
+                <p class="text-xs text-gray-500 px-4 opacity-0 group-hover:opacity-100 transition-opacity">Advanced lottery validation and UI optimization.</p>
+            </div>
+            <div class="timeline-step flex-1 text-center group">
+                <div class="w-12 h-12 bg-[#222] rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 border border-white/10 group-hover:bg-brand-red transition-all">
+                    <span class="text-sm font-bold">W12</span>
+                </div>
+                <h5 class="text-brand-red font-bold mb-2 uppercase tracking-tighter">Go-Live Readiness</h5>
+                <p class="text-xs text-gray-500 px-4 opacity-0 group-hover:opacity-100 transition-opacity">Final end-to-end testing and delivery.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commercial Terms -->
+    <section class="py-24 px-6 lg:px-24 bg-[#0a0a0a]">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-brand-red font-bold uppercase tracking-widest text-sm mb-4 text-center">04. Schedule A</h2>
+            <h3 class="text-4xl font-bold mb-12 text-center">Commercial Terms</h3>
+
+            <div class="card-glass rounded-3xl overflow-hidden mb-12">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-white/5 border-b border-white/10">
+                            <th class="p-6 text-sm font-bold uppercase tracking-widest text-gray-400">Vertical / Item</th>
+                            <th class="p-6 text-sm font-bold uppercase tracking-widest text-gray-400">Model</th>
+                            <th class="p-6 text-sm font-bold uppercase tracking-widest text-gray-400">Cost / Terms</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5">
+                        <tr>
+                            <td class="p-6">
+                                <span class="block font-bold">Setup Fee</span>
+                                <span class="text-xs text-gray-500">One-time onboarding</span>
+                            </td>
+                            <td class="p-6 text-gray-400 text-sm">Fixed Cost</td>
+                            <td class="p-6 text-2xl font-bold text-white">$20,000</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6">
+                                <span class="block font-bold">Custom Lottery</span>
+                                <span class="text-xs text-gray-500">From Day 1 Live</span>
+                            </td>
+                            <td class="p-6 text-gray-400 text-sm">GGR Share</td>
+                            <td class="p-6 text-xl font-bold text-brand-white">15% GGR</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6">
+                                <span class="block font-bold">Online Casino</span>
+                            </td>
+                            <td class="p-6 text-gray-400 text-sm">GGR Share</td>
+                            <td class="p-6 text-xl font-bold text-white">15% GGR (Normal Games) - 18% (Live Games) GGR</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6">
+                                <span class="block font-bold">Sportsbook</span>
+                                <span class="text-xs text-gray-500">Minimum Management Fee</span>
+                            </td>
+                            <td class="p-6 text-gray-400 text-sm">Tiered GGR/MMF</td>
+                            <td class="p-6 text-white">
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-lg">15% GGR</span>
+                                    <span class="text-[10px] text-gray-500 mt-1 uppercase tracking-tighter"> Minimum monthly payment:
+$4k (months 1–3), $5k (months 4–6), $6k (month 7+) whichever is higher
+</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- GGR Cards -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 bg-dark-surface rounded-2xl border border-white/5 flex items-start gap-4">
+                    <div class="mt-1 text-brand-red italic font-serif font-bold text-2xl">i</div>
+                    <div>
+                        <h6 class="font-bold text-white text-sm mb-1 uppercase">Lottery GGR Definition</h6>
+                        <p class="text-gray-500 text-xs leading-relaxed">Total Ticket Sales minus Total Winnings Paid Out.</p>
+                    </div>
+                </div>
+                <div class="p-6 bg-dark-surface rounded-2xl border border-white/5 flex items-start gap-4">
+                    <div class="mt-1 text-brand-red italic font-serif font-bold text-2xl">i</div>
+                    <div>
+                        <h6 class="font-bold text-white text-sm mb-1 uppercase">Casino & Sportsbook GGR</h6>
+                        <p class="text-gray-500 text-xs leading-relaxed">Total Bets placed minus Total Player Winnings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Kodedice / Call to Action -->
+    <section class="py-24 px-6 lg:px-24 bg-dark-surface relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-red/5 opacity-30 pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-brand-red font-bold uppercase tracking-widest text-sm mb-4">Final Verdict</h2>
+            <h3 class="text-5xl font-extrabold mb-12">Ready to Launch. <span class="text-brand-red">Ready to Scale.</span></h3>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <div class="p-6 card-glass rounded-2xl text-left border-b-2 border-brand-red">
+                    <h5 class="font-bold mb-2">Fast Execution</h5>
+                    <p class="text-xs text-gray-500">Parallel vertical development ensures record speed to market.</p>
+                </div>
+                <div class="p-6 card-glass rounded-2xl text-left border-b-2 border-brand-red">
+                    <h5 class="font-bold mb-2">Proven Tech</h5>
+                    <p class="text-xs text-gray-500">Robust sportsbook and casino backends already handling millions.</p>
+                </div>
+                <div class="p-6 card-glass rounded-2xl text-left border-b-2 border-brand-red">
+                    <h5 class="font-bold mb-2">Market Insight</h5>
+                    <p class="text-xs text-gray-500">Specific focus on African localized payment and data behavior.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <button class="bg-brand-red text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-[#d11523] transition-all transform hover:scale-105 active:scale-95 glow-red mb-6">
+                    PROCEED TO KICKOFF
+                </button>
+                <p class="text-gray-500 text-sm tracking-widest uppercase">Immediate Onboarding Available Upon Approval</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 lg:px-24 border-t border-white/5 bg-[#0a0a0a] text-center md:text-left">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <span class="font-extrabold tracking-tighter text-xl">KODEDICE</span>
+            </div>
+            <div class="text-gray-600 text-xs">
+                &copy; 2026 Kodedice Tech Solutions. All rights reserved. Confidential Proposal.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
